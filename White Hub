@@ -1,0 +1,66 @@
+--VHaiidepzaii
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local runService = game:GetService("RunService")
+
+local function load(fruitname)
+    local success, err = pcall(function()
+        replicatedStorage.Remotes.CommF_:InvokeServer("LoadFruit", fruitname)
+    end)
+    if not success then
+        warn("Failed to load fruit:", fruitname, err)
+    end
+end
+
+local removeNotify = true
+local buoi = true
+
+spawn(function()
+    while task.wait() do
+        replicatedStorage.Remotes.CommF_:InvokeServer("RemoveFruit", "Beli")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "2")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BuyItem", "Black Cape")
+        replicatedStorage.Remotes.CommF_:InvokeServer("InfoLeviathan", "2")
+        replicatedStorage.Remotes.CommF_:InvokeServer("BuyBoat", "PirateGrandBrigade")
+    end
+end)
+
+spawn(function()
+    while task.wait() do
+        load("Dragon-Dragon")
+        load("Kitsune-Kitsune")
+        load("Yeti-Yeti")
+        load("Leopard-Leopard")
+        load("Spirit-Spirit")
+        load("Gas-Gas")
+        load("Control-Control")
+        load("Venom-Venom")
+        load("Shadow-Shadow")
+        load("Dough-Dough")
+        load("T-rex-T-rex")
+        load("Mammoth-Mammoth")
+        load("Gravity-Gravity")
+        load("Blizzard-Blizzard")
+        load("Pain-Pain")
+        load("Rumble-Rumble")
+        load("Portal-Portal")
+        load("Phoenix-Phoenix")
+        load("Sound-Sound")
+        load("Ghost-Ghost")
+        load("Love-Love")
+    end
+end)
+
+spawn(function()
+    while wait() do
+        game.Players.LocalPlayer.PlayerGui.Notifications.Enabled = not removeNotify
+    end
+end)
+
+spawn(function()
+    while task.wait() do
+        runService:Set3dRenderingEnabled(not buoi)
+    end
+end)
